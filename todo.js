@@ -20,6 +20,9 @@ var ToDoList = /** @class */ (function () {
         return true; //returnerar true ifall allt har matats in korrekt
     };
     ToDoList.prototype.markToDoCompleted = function (toDoIndex) {
+        if (toDoIndex >= 0 && toDoIndex < this.todos.length) {
+            this.todos[toDoIndex].completed = true;
+        }
     };
     return ToDoList;
 }());

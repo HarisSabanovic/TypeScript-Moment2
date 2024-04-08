@@ -38,7 +38,9 @@ class ToDoList implements Todo {
     }
 
     markToDoCompleted(toDoIndex: number): void {
-        
+        if(toDoIndex >= 0 && toDoIndex < this.todos.length) {
+            this.todos[toDoIndex].completed = true;
+        }
     }
 
 }
