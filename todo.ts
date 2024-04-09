@@ -37,10 +37,29 @@ class ToDoList implements Todo {
         return true; //returnerar true ifall allt har matats in korrekt
     }
 
+    //metod för att markera todo som klart
     markToDoCompleted(toDoIndex: number): void {
         if(toDoIndex >= 0 && toDoIndex < this.todos.length) {
             this.todos[toDoIndex].completed = true;
+            this.saveToLocalStorage();
         }
     }
 
+    //metod för att hämta listan av todos
+    getTodos(): Todo[] {
+        return this.todos;
+    }
+
+    saveToLocalStorage(): void {
+        localStorage.setItem("todos", JSON.stringify(this.todos));
+    }
+
+    loadLocalStorage(): void {
+        const storedToDos = localStorage.getItem("todos");
+
+        if(storedToDos) {
+            this.todos = JSON.parse(storedToDos);
+        }
+    }
 }
+

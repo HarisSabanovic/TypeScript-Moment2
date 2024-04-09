@@ -19,9 +19,24 @@ var ToDoList = /** @class */ (function () {
         this.todos.push(newTask);
         return true; //returnerar true ifall allt har matats in korrekt
     };
+    //metod för att markera todo som klart
     ToDoList.prototype.markToDoCompleted = function (toDoIndex) {
         if (toDoIndex >= 0 && toDoIndex < this.todos.length) {
             this.todos[toDoIndex].completed = true;
+            this.saveToLocalStorage();
+        }
+    };
+    //metod för att hämta listan av todos
+    ToDoList.prototype.getTodos = function () {
+        return this.todos;
+    };
+    ToDoList.prototype.saveToLocalStorage = function () {
+        localStorage.setItem("todos", JSON.stringify(this.todos));
+    };
+    ToDoList.prototype.loadLocalStorage = function () {
+        var storedToDos = localStorage.getItem("todos");
+        if (storedToDos) {
+            this.todos = JSON.parse(storedToDos);
         }
     };
     return ToDoList;
