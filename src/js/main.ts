@@ -32,3 +32,24 @@ function displayTodos(){
         listEl.appendChild(todoItem)
     })
 }
+
+
+formEl.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const inputEl = taskInputEl.value;
+    const priorityEl = priorityInputEl.value;
+
+    if(inputEl && priorityEl >= 1 && priorityEl <= 3) {
+        newToDo.addTodo(inputEl, priorityEl);
+
+        displayTodos();
+
+        taskInputEl.value = "";
+        priorityInputEl.value = "";
+    } else {
+        alert("Skriv in korrekt uppgift och prioritet");
+    }
+});
+
+window.addEventListener('load', displayTodos);
