@@ -1,24 +1,18 @@
 //Todo interface som definierar kontraktet för en att göra uppgift
-interface Todo {
+export interface Todo {
     task: string;
     completed: boolean;
     priority: number; //1 2 eller 3;
 }
 
 //klass som implementerar interface
-class ToDoList implements Todo {
+export class ToDoList implements Todo {
 
     task: string;
     completed: boolean;
     priority: number; //1 2 eller 3;
 
     todos: Todo[] = []; //en array av ToDo objekt
-
-    constructor(task: string, completed: boolean, priority: number){
-        this.task = task;
-        this.completed = completed;
-        this.priority = priority;
-    }
 
 
     addTodo(task: string, priority: number): boolean {
@@ -34,7 +28,12 @@ class ToDoList implements Todo {
         }
 
         this.todos.push(newTask);
+        this.saveToLocalStorage
         return true; //returnerar true ifall allt har matats in korrekt
+    }
+
+    constructor(){
+        this.loadLocalStorage();
     }
 
     //metod för att markera todo som klart
