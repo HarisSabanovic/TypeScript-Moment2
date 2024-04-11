@@ -1,10 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ToDoList = void 0;
 //klass som implementerar interface
 var ToDoList = /** @class */ (function () {
-    function ToDoList(task, completed, priority) {
+    function ToDoList() {
         this.todos = []; //en array av ToDo objekt
-        this.task = task;
-        this.completed = completed;
-        this.priority = priority;
+        this.loadLocalStorage();
     }
     ToDoList.prototype.addTodo = function (task, priority) {
         if (typeof task !== "string" || typeof priority !== "number" || priority < 1 || priority > 3) {
@@ -17,6 +18,7 @@ var ToDoList = /** @class */ (function () {
             priority: priority
         };
         this.todos.push(newTask);
+        this.saveToLocalStorage;
         return true; //returnerar true ifall allt har matats in korrekt
     };
     //metod för att markera todo som klart
@@ -41,3 +43,4 @@ var ToDoList = /** @class */ (function () {
     };
     return ToDoList;
 }());
+exports.ToDoList = ToDoList;
