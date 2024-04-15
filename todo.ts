@@ -49,6 +49,13 @@ export class ToDoList implements Todo {
         return this.todos;
     }
 
+    removeTodo(index:number): void {
+        if (index>= 0 && index<this.todos.length) {
+            this.todos.splice(index, 1);
+            this.saveToLocalStorage();
+        }
+    }
+
     saveToLocalStorage(): void {
         localStorage.setItem("todos", JSON.stringify(this.todos));
     }

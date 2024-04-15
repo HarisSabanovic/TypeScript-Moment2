@@ -32,6 +32,12 @@ var ToDoList = /** @class */ (function () {
     ToDoList.prototype.getTodos = function () {
         return this.todos;
     };
+    ToDoList.prototype.removeTodo = function (index) {
+        if (index >= 0 && index < this.todos.length) {
+            this.todos.splice(index, 1);
+            this.saveToLocalStorage();
+        }
+    };
     ToDoList.prototype.saveToLocalStorage = function () {
         localStorage.setItem("todos", JSON.stringify(this.todos));
     };
